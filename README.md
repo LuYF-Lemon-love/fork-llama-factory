@@ -16,7 +16,6 @@ Choose your path:
 
 - [Table of Contents](#table-of-contents)
 - [Features](#features)
-- [Benchmark](#benchmark)
 - [Changelog](#changelog)
 - [Supported Models](#supported-models)
 - [Supported Training Approaches](#supported-training-approaches)
@@ -53,57 +52,13 @@ Choose your path:
 
 <details><summary>Full Changelog</summary>
 
-[24/03/31] We supported **[ORPO](https://arxiv.org/abs/2403.07691)**. See [examples](examples/README.md) for usage.
 
-[24/03/21] Our paper "[LlamaFactory: Unified Efficient Fine-Tuning of 100+ Language Models](https://arxiv.org/abs/2403.13372)" is available at arXiv!
 
-[24/03/20] We supported **FSDP+QLoRA** that fine-tunes a 70B model on 2x24GB GPUs. See [examples](examples/README.md) for usage.
 
-[24/03/13] We supported **[LoRA+](https://arxiv.org/abs/2402.12354)**. See [examples](examples/README.md) for usage.
 
-[24/03/07] We supported gradient low-rank projection (**[GaLore](https://arxiv.org/abs/2403.03507)**) algorithm. See [examples](examples/README.md) for usage.
 
-[24/03/07] We integrated **[vLLM](https://github.com/vllm-project/vllm)** for faster and concurrent inference. Try `infer_backend: vllm` to enjoy **270%** inference speed.
 
-[24/02/28] We supported weight-decomposed LoRA (**[DoRA](https://arxiv.org/abs/2402.09353)**). Try `use_dora: true` to activate DoRA training.
 
-[24/02/15] We supported **block expansion** proposed by [LLaMA Pro](https://github.com/TencentARC/LLaMA-Pro). See [examples](examples/README.md) for usage.
-
-[24/02/05] Qwen1.5 (Qwen2 beta version) series models are supported in LLaMA-Factory. Check this [blog post](https://qwenlm.github.io/blog/qwen1.5/) for details.
-
-[24/01/18] We supported **agent tuning** for most models, equipping model with tool using abilities by fine-tuning with `dataset: glaive_toolcall_en`.
-
-[23/12/23] We supported **[unsloth](https://github.com/unslothai/unsloth)**'s implementation to boost LoRA tuning for the LLaMA, Mistral and Yi models. Try `use_unsloth: true` argument to activate unsloth patch. It achieves **170%** speed in our benchmark, check [this page](https://github.com/hiyouga/LLaMA-Factory/wiki/Performance-comparison) for details.
-
-[23/12/12] We supported fine-tuning the latest MoE model **[Mixtral 8x7B](https://huggingface.co/mistralai/Mixtral-8x7B-v0.1)** in our framework. See hardware requirement [here](#hardware-requirement).
-
-[23/12/01] We supported downloading pre-trained models and datasets from the **[ModelScope Hub](https://modelscope.cn/models)** for Chinese mainland users. See [this tutorial](#download-from-modelscope-hub) for usage.
-
-[23/10/21] We supported **[NEFTune](https://arxiv.org/abs/2310.05914)** trick for fine-tuning. Try `neftune_noise_alpha: 5` argument to activate NEFTune.
-
-[23/09/27] We supported **$S^2$-Attn** proposed by [LongLoRA](https://github.com/dvlab-research/LongLoRA) for the LLaMA models. Try `shift_attn: true` argument to enable shift short attention.
-
-[23/09/23] We integrated MMLU, C-Eval and CMMLU benchmarks in this repo. See [examples](examples/README.md) for usage.
-
-[23/09/10] We supported **[FlashAttention-2](https://github.com/Dao-AILab/flash-attention)**. Try `flash_attn: fa2` argument to enable FlashAttention-2 if you are using RTX4090, A100 or H100 GPUs.
-
-[23/08/12] We supported **RoPE scaling** to extend the context length of the LLaMA models. Try `rope_scaling: linear` argument in training and `rope_scaling: dynamic` argument at inference to extrapolate the position embeddings.
-
-[23/08/11] We supported **[DPO training](https://arxiv.org/abs/2305.18290)** for instruction-tuned models. See [examples](examples/README.md) for usage.
-
-[23/07/31] We supported **dataset streaming**. Try `streaming: true` and `max_steps: 10000` arguments to load your dataset in streaming mode.
-
-[23/07/29] We released two instruction-tuned 13B models at Hugging Face. See these Hugging Face Repos ([LLaMA-2](https://huggingface.co/hiyouga/Llama-2-Chinese-13b-chat) / [Baichuan](https://huggingface.co/hiyouga/Baichuan-13B-sft)) for details.
-
-[23/07/18] We developed an **all-in-one Web UI** for training, evaluation and inference. Try `train_web.py` to fine-tune models in your Web browser. Thank [@KanadeSiina](https://github.com/KanadeSiina) and [@codemayq](https://github.com/codemayq) for their efforts in the development.
-
-[23/07/09] We released **[FastEdit](https://github.com/hiyouga/FastEdit)** ⚡🩹, an easy-to-use package for editing the factual knowledge of large language models efficiently. Please follow [FastEdit](https://github.com/hiyouga/FastEdit) if you are interested.
-
-[23/06/29] We provided a **reproducible example** of training a chat model using instruction-following datasets, see [Baichuan-7B-sft](https://huggingface.co/hiyouga/Baichuan-7B-sft) for details.
-
-[23/06/22] We aligned the [demo API](src/api_demo.py) with the [OpenAI's](https://platform.openai.com/docs/api-reference/chat) format where you can insert the fine-tuned model in **arbitrary ChatGPT-based applications**.
-
-[23/06/03] We supported quantized training and inference (aka **[QLoRA](https://github.com/artidoro/qlora)**). See [examples](examples/README.md) for usage.
 
 </details>
 
@@ -610,6 +565,14 @@ This repo benefits from [PEFT](https://github.com/huggingface/peft), [TRL](https
 4. [AstraMindAI's implementation](https://github.com/astramind-ai/Mixture-of-depths)
 5. [unsloth](https://github.com/unslothai/unsloth)
 6. [hiyouga/LLaMA-Factory Performance Comparison](https://github.com/hiyouga/LLaMA-Factory/wiki/Performance-comparison)
+7. [vLLM](https://github.com/vllm-project/vllm)
+8. [LLaMA Pro](https://github.com/TencentARC/LLaMA-Pro)
+9. [ModelScope Hub](https://modelscope.cn/models)
+10. [LongLoRA](https://github.com/dvlab-research/LongLoRA)
+11. [FlashAttention-2](https://github.com/Dao-AILab/flash-attention)
+12. [FastEdit](https://github.com/hiyouga/FastEdit)
+13. [OpenAI's API format](https://platform.openai.com/docs/api-reference/chat)
+14. [QLoRA](https://github.com/artidoro/qlora)
 
 ---
 
@@ -621,6 +584,13 @@ This repo benefits from [PEFT](https://github.com/huggingface/peft), [TRL](https
 4. [KTO](https://arxiv.org/abs/2402.01306)
 5. [Mixture-of-Depths](https://arxiv.org/abs/2404.02258)
 6. [BAdam](https://arxiv.org/abs/2404.02827)
+7. [ORPO](https://arxiv.org/abs/2403.07691)
+8. [LlamaFactory: Unified Efficient Fine-Tuning of 100+ Language Models](https://arxiv.org/abs/2403.13372)
+9. [LoRA+](https://arxiv.org/abs/2402.12354)
+10. [GaLore](https://arxiv.org/abs/2403.03507)
+11. [DoRA](https://arxiv.org/abs/2402.09353)
+12. [NEFTune](https://arxiv.org/abs/2310.05914)
+13. [DPO training](https://arxiv.org/abs/2305.18290)
 
 </details>
 
@@ -628,10 +598,14 @@ This repo benefits from [PEFT](https://github.com/huggingface/peft), [TRL](https
 
 <details><summary>Papers</summary>
 
-1. [Qwen2](https://qwenlm.github.io/blog/qwen2/)
+1. [Qwen2](https://qwenlm.github.io/blog/qwen2/), [Qwen1.5](https://qwenlm.github.io/blog/qwen1.5/)
 2. [GLM-4](https://github.com/THUDM/GLM-4)
 3. [Llama3-8B-Chinese-Chat](https://huggingface.co/shenzhi-wang/Llama3-8B-Chinese-Chat)
 4. [Llama3-Chinese](https://huggingface.co/zhichen/Llama3-Chinese)
+5. [Mixtral 8x7B](https://huggingface.co/mistralai/Mixtral-8x7B-v0.1)
+6. [LLaMA-2](https://huggingface.co/hiyouga/Llama-2-Chinese-13b-chat)
+7. [Baichuan](https://huggingface.co/hiyouga/Baichuan-13B-sft)
+8. [Baichuan-7B-sft](https://huggingface.co/hiyouga/Baichuan-7B-sft)
 
 </details>
 
