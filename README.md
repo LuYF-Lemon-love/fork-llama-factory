@@ -6,8 +6,6 @@
 
 \[ English | [中文](README_zh.md) \]
 
-https://github.com/user-attachments/assets/7c96b465-9df7-45f4-8053-bf03e58386d3
-
 Choose your path:
 
 - **Colab**: https://colab.research.google.com/drive/1eRTPn37ltBbYsISy9Aw2NuI2Aq5CQrD9?usp=sharing
