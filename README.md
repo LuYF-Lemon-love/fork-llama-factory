@@ -51,27 +51,7 @@ Choose your path:
 
 ## Changelog
 
-[24/06/07] We supported fine-tuning the **[Qwen2](https://qwenlm.github.io/blog/qwen2/)** and **[GLM-4](https://github.com/THUDM/GLM-4)** models.
-
-[24/05/26] We supported **[SimPO](https://arxiv.org/abs/2405.14734)** algorithm for preference learning. See [examples](examples/README.md) for usage.
-
 <details><summary>Full Changelog</summary>
-
-[24/05/20] We supported fine-tuning the **PaliGemma** series models. Note that the PaliGemma models are pre-trained models, you need to fine-tune them with `gemma` template for chat completion.
-
-[24/05/18] We supported **[KTO](https://arxiv.org/abs/2402.01306)** algorithm for preference learning. See [examples](examples/README.md) for usage.
-
-[24/05/14] We supported training and inference on the Ascend NPU devices. Check [installation](#installation) section for details.
-
-[24/04/26] We supported fine-tuning the **LLaVA-1.5** multimodal LLMs. See [examples](examples/README.md) for usage.
-
-[24/04/22] We provided a **[Colab notebook](https://colab.research.google.com/drive/1eRTPn37ltBbYsISy9Aw2NuI2Aq5CQrD9?usp=sharing)** for fine-tuning the Llama-3 model on a free T4 GPU. Two Llama-3-derived models fine-tuned using LLaMA Factory are available at Hugging Face, check [Llama3-8B-Chinese-Chat](https://huggingface.co/shenzhi-wang/Llama3-8B-Chinese-Chat) and [Llama3-Chinese](https://huggingface.co/zhichen/Llama3-Chinese) for details.
-
-[24/04/21] We supported **[Mixture-of-Depths](https://arxiv.org/abs/2404.02258)** according to [AstraMindAI's implementation](https://github.com/astramind-ai/Mixture-of-depths). See [examples](examples/README.md) for usage.
-
-[24/04/16] We supported **[BAdam](https://arxiv.org/abs/2404.02827)**. See [examples](examples/README.md) for usage.
-
-[24/04/16] We supported **[unsloth](https://github.com/unslothai/unsloth)**'s long-sequence training (Llama-2-7B-56k within 24GB). It achieves **117%** speed and **50%** memory compared with FlashAttention-2, more benchmarks can be found in [this page](https://github.com/hiyouga/LLaMA-Factory/wiki/Performance-comparison).
 
 [24/03/31] We supported **[ORPO](https://arxiv.org/abs/2403.07691)**. See [examples](examples/README.md) for usage.
 
@@ -627,6 +607,9 @@ This repo benefits from [PEFT](https://github.com/huggingface/peft), [TRL](https
 1. [![Spaces](https://img.shields.io/badge/🤗-Open%20in%20Spaces-blue)](https://huggingface.co/spaces/hiyouga/LLaMA-Board)
 2. [![Studios](https://img.shields.io/badge/ModelScope-Open%20in%20Studios-blue)](https://modelscope.cn/studios/hiyouga/LLaMA-Board)
 3. [ChatGLM's P-Tuning](https://github.com/THUDM/ChatGLM2-6B/tree/main/ptuning)
+4. [AstraMindAI's implementation](https://github.com/astramind-ai/Mixture-of-depths)
+5. [unsloth](https://github.com/unslothai/unsloth)
+6. [hiyouga/LLaMA-Factory Performance Comparison](https://github.com/hiyouga/LLaMA-Factory/wiki/Performance-comparison)
 
 ---
 
@@ -634,5 +617,28 @@ This repo benefits from [PEFT](https://github.com/huggingface/peft), [TRL](https
 
 1. [advertising text generation](https://aclanthology.org/D19-1321.pdf).
 2. [PiSSA](https://arxiv.org/abs/2404.02948)
+3. [SimPO](https://arxiv.org/abs/2405.14734)
+4. [KTO](https://arxiv.org/abs/2402.01306)
+5. [Mixture-of-Depths](https://arxiv.org/abs/2404.02258)
+6. [BAdam](https://arxiv.org/abs/2404.02827)
+
+</details>
+
+---
+
+<details><summary>Papers</summary>
+
+1. [Qwen2](https://qwenlm.github.io/blog/qwen2/)
+2. [GLM-4](https://github.com/THUDM/GLM-4)
+3. [Llama3-8B-Chinese-Chat](https://huggingface.co/shenzhi-wang/Llama3-8B-Chinese-Chat)
+4. [Llama3-Chinese](https://huggingface.co/zhichen/Llama3-Chinese)
+
+</details>
+
+---
+
+<details><summary>Scripts</summary>
+
+1. [Colab notebook](https://colab.research.google.com/drive/1eRTPn37ltBbYsISy9Aw2NuI2Aq5CQrD9?usp=sharing)
 
 </details>
