@@ -1,25 +1,10 @@
 ![# LLaMA Factory](assets/logo.png)
 
-[![GitHub Repo stars](https://img.shields.io/github/stars/hiyouga/LLaMA-Factory?style=social)](https://github.com/hiyouga/LLaMA-Factory/stargazers)
-[![GitHub Code License](https://img.shields.io/github/license/hiyouga/LLaMA-Factory)](LICENSE)
-[![GitHub last commit](https://img.shields.io/github/last-commit/hiyouga/LLaMA-Factory)](https://github.com/hiyouga/LLaMA-Factory/commits/main)
 [![PyPI](https://img.shields.io/pypi/v/llamafactory)](https://pypi.org/project/llamafactory/)
-[![Citation](https://img.shields.io/badge/citation-72-green)](#projects-using-llama-factory)
-[![GitHub pull request](https://img.shields.io/badge/PRs-welcome-blue)](https://github.com/hiyouga/LLaMA-Factory/pulls)
-[![Discord](https://dcbadge.vercel.app/api/server/rKfvV9r9FK?compact=true&style=flat)](https://discord.gg/rKfvV9r9FK)
-[![Twitter](https://img.shields.io/twitter/follow/llamafactory_ai)](https://twitter.com/llamafactory_ai)
 [![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1eRTPn37ltBbYsISy9Aw2NuI2Aq5CQrD9?usp=sharing)
 [![Open in DSW](https://gallery.pai-ml.com/assets/open-in-dsw.svg)](https://gallery.pai-ml.com/#/preview/deepLearning/nlp/llama_factory)
-[![Spaces](https://img.shields.io/badge/🤗-Open%20in%20Spaces-blue)](https://huggingface.co/spaces/hiyouga/LLaMA-Board)
-[![Studios](https://img.shields.io/badge/ModelScope-Open%20in%20Studios-blue)](https://modelscope.cn/studios/hiyouga/LLaMA-Board)
-
-[![GitHub Tread](https://trendshift.io/api/badge/repositories/4535)](https://trendshift.io/repositories/4535)
-
-👋 Join our [WeChat](assets/wechat.jpg) or [NPU user group](assets/wechat_npu.jpg).
 
 \[ English | [中文](README_zh.md) \]
-
-**Fine-tuning a large language model can be easy as...**
 
 https://github.com/user-attachments/assets/7c96b465-9df7-45f4-8053-bf03e58386d3
 
@@ -31,6 +16,7 @@ Choose your path:
 
 ## Table of Contents
 
+- [Table of Contents](#table-of-contents)
 - [Features](#features)
 - [Benchmark](#benchmark)
 - [Changelog](#changelog)
@@ -38,11 +24,22 @@ Choose your path:
 - [Supported Training Approaches](#supported-training-approaches)
 - [Provided Datasets](#provided-datasets)
 - [Requirement](#requirement)
+  - [Hardware Requirement](#hardware-requirement)
 - [Getting Started](#getting-started)
+  - [Installation](#installation)
+  - [Data Preparation](#data-preparation)
+  - [Quickstart](#quickstart)
+  - [Fine-Tuning with LLaMA Board GUI (powered by Gradio)](#fine-tuning-with-llama-board-gui-powered-by-gradio)
+  - [Build Docker](#build-docker)
+  - [Deploy with OpenAI-style API and vLLM](#deploy-with-openai-style-api-and-vllm)
+  - [Download from ModelScope Hub](#download-from-modelscope-hub)
+  - [Use W\&B Logger](#use-wb-logger)
 - [Projects using LLaMA Factory](#projects-using-llama-factory)
 - [License](#license)
 - [Citation](#citation)
 - [Acknowledgement](#acknowledgement)
+- [Star History](#star-history)
+- [References](#references)
 
 ## Features
 
@@ -643,3 +640,8 @@ This repo benefits from [PEFT](https://github.com/huggingface/peft), [TRL](https
 ## Star History
 
 ![Star History Chart](https://api.star-history.com/svg?repos=hiyouga/LLaMA-Factory&type=Date)
+
+## References
+
+1. [![Spaces](https://img.shields.io/badge/🤗-Open%20in%20Spaces-blue)](https://huggingface.co/spaces/hiyouga/LLaMA-Board)
+2. [![Studios](https://img.shields.io/badge/ModelScope-Open%20in%20Studios-blue)](https://modelscope.cn/studios/hiyouga/LLaMA-Board)
