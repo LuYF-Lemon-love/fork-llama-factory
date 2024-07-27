@@ -14,11 +14,11 @@
 - [Provided Datasets](#provided-datasets)
 - [Getting Started](#getting-started)
   - [Installation](#installation)
+  - [Download from ModelScope Hub](#download-from-modelscope-hub)
   - [Data Preparation](#data-preparation)
   - [Quickstart](#quickstart)
   - [Fine-Tuning with LLaMA Board GUI (powered by Gradio)](#fine-tuning-with-llama-board-gui-powered-by-gradio)
   - [Deploy with OpenAI-style API and vLLM](#deploy-with-openai-style-api-and-vllm)
-  - [Download from ModelScope Hub](#download-from-modelscope-hub)
   - [Use W\&B Logger](#use-wb-logger)
 - [References](#references)
 
@@ -182,13 +182,29 @@ huggingface-cli login
 ### Installation
 
 ```bash
-git clone --depth 1 https://github.com/hiyouga/LLaMA-Factory.git
-cd LLaMA-Factory
-pip install -e ".[torch,metrics]"
+$ git clone --depth 1 https://github.com/hiyouga/LLaMA-Factory.git
+$ cd LLaMA-Factory
+$ python -m venv env
+$ source env/bin/activate
+$ pip install --upgrade pip
+$ pip install -e ".[torch,metrics]"
 ```
 
 > [!TIP]
 > Use `pip install --no-deps -e .` to resolve package conflicts.
+
+### Download from ModelScope Hub
+
+If you have trouble with downloading models and datasets from Hugging Face, you can use ModelScope.
+
+```bash
+$ cd
+$ vim .bashrc
+export USE_MODELSCOPE_HUB=1 # `set USE_MODELSCOPE_HUB=1` for Windows
+$ source .bashrc
+```
+
+Train the model by specifying a model ID of the ModelScope Hub as the `model_name_or_path`. You can find a full list of model IDs at [ModelScope Hub](https://modelscope.cn/models), e.g., `LLM-Research/Meta-Llama-3-8B-Instruct`.
 
 ### Data Preparation
 
@@ -202,7 +218,7 @@ Please refer to [data/README.md](data/README.md) for checking the details about 
 Use the following 3 commands to run LoRA **fine-tuning**, **inference** and **merging** of the Llama3-8B-Instruct model, respectively.
 
 ```bash
-llamafactory-cli train examples/train_lora/llama3_lora_sft.yaml
+CUDA_VISIBLE_DEVICES=0 llamafactory-cli train examples/train_lora/llama3_lora_sft.yaml
 llamafactory-cli chat examples/inference/llama3_lora_sft.yaml
 llamafactory-cli export examples/merge_lora/llama3_lora_sft.yaml
 ```
@@ -226,16 +242,6 @@ API_PORT=8000 llamafactory-cli api examples/inference/llama3_vllm.yaml
 
 > [!TIP]
 > Visit https://platform.openai.com/docs/api-reference/chat/create for API document.
-
-### Download from ModelScope Hub
-
-If you have trouble with downloading models and datasets from Hugging Face, you can use ModelScope.
-
-```bash
-export USE_MODELSCOPE_HUB=1 # `set USE_MODELSCOPE_HUB=1` for Windows
-```
-
-Train the model by specifying a model ID of the ModelScope Hub as the `model_name_or_path`. You can find a full list of model IDs at [ModelScope Hub](https://modelscope.cn/models), e.g., `LLM-Research/Meta-Llama-3-8B-Instruct`.
 
 ### Use W&B Logger
 

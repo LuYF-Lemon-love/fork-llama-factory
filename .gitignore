@@ -165,5 +165,6 @@ hf_cache/
 cache/
 config/
 saves/
+models/
 output/
 wandb/

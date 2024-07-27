@@ -1,7 +1,3 @@
-We provide diverse examples about fine-tuning LLMs.
-
-Make sure to execute these commands in the `LLaMA-Factory` directory.
-
 ## Table of Contents
 
 - [LoRA Fine-Tuning](#lora-fine-tuning)
@@ -11,7 +7,7 @@ Make sure to execute these commands in the `LLaMA-Factory` directory.
 - [Inferring LoRA Fine-Tuned Models](#inferring-lora-fine-tuned-models)
 - [Extras](#extras)
 
-Use `CUDA_VISIBLE_DEVICES` (GPU) or `ASCEND_RT_VISIBLE_DEVICES` (NPU) to choose computing devices.
+> Use `CUDA_VISIBLE_DEVICES` (GPU) to choose computing devices.
 
 ## Examples
 
