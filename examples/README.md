@@ -16,13 +16,13 @@
 #### (Continuous) Pre-Training
 
 ```bash
-llamafactory-cli train examples/train_lora/llama3_lora_pretrain.yaml
+CUDA_VISIBLE_DEVICES=0 llamafactory-cli train examples/train_lora/llama3_lora_pretrain.yaml
 ```
 
 #### Supervised Fine-Tuning
 
 ```bash
-llamafactory-cli train examples/train_lora/llama3_lora_sft.yaml
+CUDA_VISIBLE_DEVICES=0 llamafactory-cli train examples/train_lora/llama3_lora_sft.yaml
 ```
 
 #### Multimodal Supervised Fine-Tuning
@@ -34,25 +34,25 @@ llamafactory-cli train examples/train_lora/llava1_5_lora_sft.yaml
 #### Reward Modeling
 
 ```bash
-llamafactory-cli train examples/train_lora/llama3_lora_reward.yaml
+CUDA_VISIBLE_DEVICES=0 llamafactory-cli train examples/train_lora/llama3_lora_reward.yaml
 ```
 
 #### PPO Training
 
 ```bash
-llamafactory-cli train examples/train_lora/llama3_lora_ppo.yaml
+CUDA_VISIBLE_DEVICES=0 llamafactory-cli train examples/train_lora/llama3_lora_ppo.yaml
 ```
 
 #### DPO/ORPO/SimPO Training
 
 ```bash
-llamafactory-cli train examples/train_lora/llama3_lora_dpo.yaml
+CUDA_VISIBLE_DEVICES=0 llamafactory-cli train examples/train_lora/llama3_lora_dpo.yaml
 ```
 
 #### KTO Training
 
 ```bash
-llamafactory-cli train examples/train_lora/llama3_lora_kto.yaml
+CUDA_VISIBLE_DEVICES=0 llamafactory-cli train examples/train_lora/llama3_lora_kto.yaml
 ```
 
 #### Preprocess Dataset
@@ -60,7 +60,7 @@ llamafactory-cli train examples/train_lora/llama3_lora_kto.yaml
 It is useful for large dataset, use `tokenized_path` in config to load the preprocessed dataset.
 
 ```bash
-llamafactory-cli train examples/train_lora/llama3_preprocess.yaml
+CUDA_VISIBLE_DEVICES=0 llamafactory-cli train examples/train_lora/llama3_preprocess.yaml
 ```
 
 #### Evaluating on MMLU/CMMLU/C-Eval Benchmarks

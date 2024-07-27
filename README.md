@@ -190,6 +190,8 @@ $ pip install --upgrade pip
 $ pip install -e ".[torch,metrics]"
 ```
 
+Extra dependencies available: torch, torch-npu, metrics, deepspeed, bitsandbytes, hqq, eetq, gptq, awq, aqlm, vllm, galore, badam, qwen, modelscope, quality
+
 > [!TIP]
 > Use `pip install --no-deps -e .` to resolve package conflicts.
 

@@ -21,3 +21,7 @@ pyyaml
 numpy<2.0.0
 # added by luyanfeng
 modelscope
+deepspeed
+bitsandbytes
+optimum
+auto_gptq
