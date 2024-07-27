@@ -1,4 +1,4 @@
 #!/bin/bash
 git add --all
-git commit -m "clear README.md"
+git commit -m "delete .github"
 git push
