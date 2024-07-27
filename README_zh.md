@@ -16,17 +16,46 @@ https://github.com/user-attachments/assets/e6ce34b0-52d5-4f3e-a830-592106c4c272
 ## 目录
 
 - [目录](#目录)
+- [项目特色](#项目特色)
+- [性能指标](#性能指标)
 - [更新日志](#更新日志)
 - [模型](#模型)
+- [训练方法](#训练方法)
 - [数据集](#数据集)
 - [如何使用](#如何使用)
   - [安装 LLaMA Factory](#安装-llama-factory)
   - [数据准备](#数据准备)
   - [快速开始](#快速开始)
   - [LLaMA Board 可视化微调（由 Gradio 驱动）](#llama-board-可视化微调由-gradio-驱动)
+  - [构建 Docker](#构建-docker)
   - [利用 vLLM 部署 OpenAI API](#利用-vllm-部署-openai-api)
   - [从魔搭社区下载](#从魔搭社区下载)
   - [使用 W\&B 面板](#使用-wb-面板)
+
+## 项目特色
+
+- **多种模型**：LLaMA、LLaVA、Mistral、Mixtral-MoE、Qwen、Yi、Gemma、Baichuan、ChatGLM、Phi 等等。
+- **集成方法**：（增量）预训练、（多模态）指令监督微调、奖励模型训练、PPO 训练、DPO 训练、KTO 训练、ORPO 训练等等。
+- **多种精度**：16 比特全参数微调、冻结微调、LoRA 微调和基于 AQLM/AWQ/GPTQ/LLM.int8/HQQ/EETQ 的 2/3/4/5/6/8 比特 QLoRA 微调。
+- **先进算法**：GaLore、BAdam、DoRA、LongLoRA、LLaMA Pro、Mixture-of-Depths、LoRA+、LoftQ、PiSSA 和 Agent 微调。
+- **实用技巧**：FlashAttention-2、Unsloth、RoPE scaling、NEFTune 和 rsLoRA。
+- **实验监控**：LlamaBoard、TensorBoard、Wandb、MLflow 等等。
+- **极速推理**：基于 vLLM 的 OpenAI 风格 API、浏览器界面和命令行接口。
+
+## 性能指标
+
+与 ChatGLM 官方的 [P-Tuning](https://github.com/THUDM/ChatGLM2-6B/tree/main/ptuning) 微调相比，LLaMA Factory 的 LoRA 微调提供了 **3.7 倍**的加速比，同时在广告文案生成任务上取得了更高的 Rouge 分数。结合 4 比特量化技术，LLaMA Factory 的 QLoRA 微调进一步降低了 GPU 显存消耗。
+
+![benchmark](assets/benchmark.svg)
+
+<details><summary>变量定义</summary>
+
+- **Training Speed**: 训练阶段每秒处理的样本数量。（批处理大小=4，截断长度=1024）
+- **Rouge Score**: [广告文案生成](https://aclanthology.org/D19-1321.pdf)任务验证集上的 Rouge-2 分数。（批处理大小=4，截断长度=1024）
+- **GPU Memory**: 4 比特量化训练的 GPU 显存峰值。（批处理大小=1，截断长度=1024）
+- 我们在 ChatGLM 的 P-Tuning 中采用 `pre_seq_len=128`，在 LLaMA Factory 的 LoRA 微调中采用 `lora_rank=32`。
+
+</details>
 
 ## 更新日志
 <details><summary>展开日志</summary>
@@ -101,6 +130,22 @@ https://github.com/user-attachments/assets/e6ce34b0-52d5-4f3e-a830-592106c4c272
 项目所支持模型的完整列表请参阅 [constants.py](src/llamafactory/extras/constants.py)。
 
 您也可以在 [template.py](src/llamafactory/data/template.py) 中添加自己的对话模板。
+
+## 训练方法
+
+| 方法                   |     全参数训练      |    部分参数训练     |       LoRA         |       QLoRA        |
+| ---------------------- | ------------------ | ------------------ | ------------------ | ------------------ |
+| 预训练                 | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: |
+| 指令监督微调            | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: |
+| 奖励模型训练            | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: |
+| PPO 训练               | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: |
+| DPO 训练               | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: |
+| KTO 训练               | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: |
+| ORPO 训练              | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: |
+| SimPO 训练             | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: |
+
+> [!TIP]
+> 有关 PPO 的实现细节，请参考[此博客](https://newfacade.github.io/notes-on-reinforcement-learning/17-ppo-trl.html)。
 
 ## 数据集
 
@@ -237,6 +282,129 @@ llamafactory-cli export examples/merge_lora/llama3_lora_sft.yaml
 ```bash
 llamafactory-cli webui
 ```
+
+### 构建 Docker
+
+CUDA 用户：
+
+```bash
+cd docker/docker-cuda/
+docker compose up -d
+docker compose exec llamafactory bash
+```
+
+昇腾 NPU 用户：
+
+```bash
+cd docker/docker-npu/
+docker compose up -d
+docker compose exec llamafactory bash
+```
+
+AMD ROCm 用户：
+
+```bash
+cd docker/docker-rocm/
+docker compose up -d
+docker compose exec llamafactory bash
+```
+
+<details><summary>不使用 Docker Compose 构建</summary>
+
+CUDA 用户：
+
+```bash
+docker build -f ./docker/docker-cuda/Dockerfile \
+    --build-arg INSTALL_BNB=false \
+    --build-arg INSTALL_VLLM=false \
+    --build-arg INSTALL_DEEPSPEED=false \
+    --build-arg INSTALL_FLASHATTN=false \
+    --build-arg PIP_INDEX=https://pypi.org/simple \
+    -t llamafactory:latest .
+
+docker run -dit --gpus=all \
+    -v ./hf_cache:/root/.cache/huggingface \
+    -v ./ms_cache:/root/.cache/modelscope \
+    -v ./data:/app/data \
+    -v ./output:/app/output \
+    -p 7860:7860 \
+    -p 8000:8000 \
+    --shm-size 16G \
+    --name llamafactory \
+    llamafactory:latest
+
+docker exec -it llamafactory bash
+```
+
+昇腾 NPU 用户：
+
+```bash
+# 根据您的环境选择镜像
+docker build -f ./docker/docker-npu/Dockerfile \
+    --build-arg INSTALL_DEEPSPEED=false \
+    --build-arg PIP_INDEX=https://pypi.org/simple \
+    -t llamafactory:latest .
+
+# 根据您的资源更改 `device`
+docker run -dit \
+    -v ./hf_cache:/root/.cache/huggingface \
+    -v ./ms_cache:/root/.cache/modelscope \
+    -v ./data:/app/data \
+    -v ./output:/app/output \
+    -v /usr/local/dcmi:/usr/local/dcmi \
+    -v /usr/local/bin/npu-smi:/usr/local/bin/npu-smi \
+    -v /usr/local/Ascend/driver:/usr/local/Ascend/driver \
+    -v /etc/ascend_install.info:/etc/ascend_install.info \
+    -p 7860:7860 \
+    -p 8000:8000 \
+    --device /dev/davinci0 \
+    --device /dev/davinci_manager \
+    --device /dev/devmm_svm \
+    --device /dev/hisi_hdc \
+    --shm-size 16G \
+    --name llamafactory \
+    llamafactory:latest
+
+docker exec -it llamafactory bash
+```
+
+AMD ROCm 用户：
+
+```bash
+docker build -f ./docker/docker-rocm/Dockerfile \
+    --build-arg INSTALL_BNB=false \
+    --build-arg INSTALL_VLLM=false \
+    --build-arg INSTALL_DEEPSPEED=false \
+    --build-arg INSTALL_FLASHATTN=false \
+    --build-arg PIP_INDEX=https://pypi.org/simple \
+    -t llamafactory:latest .
+
+docker run -dit \
+    -v ./hf_cache:/root/.cache/huggingface \
+    -v ./ms_cache:/root/.cache/modelscope \
+    -v ./data:/app/data \
+    -v ./output:/app/output \
+    -v ./saves:/app/saves \
+    -p 7860:7860 \
+    -p 8000:8000 \
+    --device /dev/kfd \
+    --device /dev/dri \
+    --shm-size 16G \
+    --name llamafactory \
+    llamafactory:latest
+
+docker exec -it llamafactory bash
+```
+
+</details>
+
+<details><summary>数据卷详情</summary>
+
+- hf_cache：使用宿主机的 Hugging Face 缓存文件夹，允许更改为新的目录。
+- data：宿主机中存放数据集的文件夹路径。
+- output：将导出目录设置为该路径后，即可在宿主机中访问导出后的模型。
+
+</details>
 
 ### 利用 vLLM 部署 OpenAI API
 
