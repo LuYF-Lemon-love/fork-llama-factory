@@ -304,7 +304,7 @@ Set `WANDB_API_KEY` to [your key](https://wandb.ai/authorize) when launching tra
 
 ---
 
-<details><summary>Papers</summary>
+<details><summary>Models</summary>
 
 1. [Qwen2](https://qwenlm.github.io/blog/qwen2/), [Qwen1.5](https://qwenlm.github.io/blog/qwen1.5/)
 2. [GLM-4](https://github.com/THUDM/GLM-4)

@@ -1,4 +1,4 @@
 #!/bin/bash
 git add --all
-git commit -m "update readme.md in examples"
+git commit -m "update constants"
 git push

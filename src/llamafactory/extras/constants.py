@@ -1,16 +1,11 @@
-# Copyright 2024 the LlamaFactory team.
+# coding:utf-8
 #
-# Licensed under the Apache License, Version 2.0 (the "License");
-# you may not use this file except in compliance with the License.
-# You may obtain a copy of the License at
-#
-#     http://www.apache.org/licenses/LICENSE-2.0
-#
-# Unless required by applicable law or agreed to in writing, software
-# distributed under the License is distributed on an "AS IS" BASIS,
-# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-# See the License for the specific language governing permissions and
-# limitations under the License.
+# src/llamafactory/extras/constants.py
+# 
+# git pull from LlamaFactory by LuYF-Lemon-love <luyanfeng_nlp@qq.com> on Jul 24, 2024
+# updated by LuYF-Lemon-love <luyanfeng_nlp@qq.com> on Jul 28, 2024
+# 
+# introduce a full list of models we supported.
 
 from collections import OrderedDict, defaultdict
 from enum import Enum
