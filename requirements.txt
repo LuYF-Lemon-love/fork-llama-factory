@@ -24,4 +24,4 @@ modelscope
 deepspeed
 bitsandbytes
 optimum
-auto_gptq
+mixture-of-depth
