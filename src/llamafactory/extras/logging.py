@@ -1,16 +1,11 @@
-# Copyright 2024 the LlamaFactory team.
+# coding:utf-8
 #
-# Licensed under the Apache License, Version 2.0 (the "License");
-# you may not use this file except in compliance with the License.
-# You may obtain a copy of the License at
-#
-#     http://www.apache.org/licenses/LICENSE-2.0
-#
-# Unless required by applicable law or agreed to in writing, software
-# distributed under the License is distributed on an "AS IS" BASIS,
-# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-# See the License for the specific language governing permissions and
-# limitations under the License.
+# src/llamafactory/extras/logging.py
+# 
+# git pull from LlamaFactory by LuYF-Lemon-love <luyanfeng_nlp@qq.com> on Jul 24, 2024
+# updated by LuYF-Lemon-love <luyanfeng_nlp@qq.com> on Jul 28, 2024
+# 
+# logging module in LlamaFactory.
 
 import logging
 import os
@@ -57,19 +52,32 @@ class LoggerHandler(logging.Handler):
 
 
 def get_logger(name: str) -> logging.Logger:
-    r"""
+    
+    """
     Gets a standard logger with a stream hander to stdout.
     """
+    
+    # Create a formatter to define the log message format
     formatter = logging.Formatter(
         fmt="%(asctime)s - %(levelname)s - %(name)s - %(message)s", datefmt="%m/%d/%Y %H:%M:%S"
     )
+    
+    # Create a stream handler to write log messages to stdout
     handler = logging.StreamHandler(sys.stdout)
+    
+    # Set the formatter for the handler
     handler.setFormatter(formatter)
-
+    
+    # Get or create a logger with the specified name
     logger = logging.getLogger(name)
+    
+    # Set the logger's logging level to INFO
     logger.setLevel(logging.INFO)
+    
+    # Add the handler to the logger
     logger.addHandler(handler)
-
+    
+    # Return the created logger
     return logger
 
 
