@@ -12,6 +12,8 @@
 - [Supported Models](#supported-models)
 - [Supported Training Approaches](#supported-training-approaches)
 - [Provided Datasets](#provided-datasets)
+- [Requirement](#requirement)
+  - [Hardware Requirement](#hardware-requirement)
 - [Getting Started](#getting-started)
   - [Installation](#installation)
   - [Download from ModelScope Hub](#download-from-modelscope-hub)
@@ -21,7 +23,6 @@
   - [Deploy with OpenAI-style API and vLLM](#deploy-with-openai-style-api-and-vllm)
   - [Use W\&B Logger](#use-wb-logger)
 - [References](#references)
-- [Star History](#star-history)
 
 ## Features
 
@@ -178,6 +179,40 @@ Some datasets require confirmation before using them, so we recommend logging in
 pip install --upgrade huggingface_hub
 huggingface-cli login
 ```
+
+## Requirement
+
+| Mandatory    | Minimum | Recommend |
+| ------------ | ------- | --------- |
+| python       | 3.8     | 3.11      |
+| torch        | 1.13.1  | 2.4.0     |
+| transformers | 4.41.2  | 4.43.4    |
+| datasets     | 2.16.0  | 2.20.0    |
+| accelerate   | 0.30.1  | 0.32.0    |
+| peft         | 0.11.1  | 0.12.0    |
+| trl          | 0.8.6   | 0.9.6     |
+
+| Optional     | Minimum | Recommend |
+| ------------ | ------- | --------- |
+| CUDA         | 11.6    | 12.2      |
+| deepspeed    | 0.10.0  | 0.14.0    |
+| bitsandbytes | 0.39.0  | 0.43.1    |
+| vllm         | 0.4.3   | 0.5.0     |
+| flash-attn   | 2.3.0   | 2.6.3     |
+
+### Hardware Requirement
+
+\* *estimated*
+
+| Method            | Bits |   7B  |  13B  |  30B  |   70B  |  110B  |  8x7B |  8x22B |
+| ----------------- | ---- | ----- | ----- | ----- | ------ | ------ | ----- | ------ |
+| Full              | AMP  | 120GB | 240GB | 600GB | 1200GB | 2000GB | 900GB | 2400GB |
+| Full              |  16  |  60GB | 120GB | 300GB |  600GB |  900GB | 400GB | 1200GB |
+| Freeze            |  16  |  20GB |  40GB |  80GB |  200GB |  360GB | 160GB |  400GB |
+| LoRA/GaLore/BAdam |  16  |  16GB |  32GB |  64GB |  160GB |  240GB | 120GB |  320GB |
+| QLoRA             |   8  |  10GB |  20GB |  40GB |   80GB |  140GB |  60GB |  160GB |
+| QLoRA             |   4  |   6GB |  12GB |  24GB |   48GB |   72GB |  30GB |   96GB |
+| QLoRA             |   2  |   4GB |   8GB |  16GB |   24GB |   48GB |  18GB |   48GB |
 
 ## Getting Started
 
