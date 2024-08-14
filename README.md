@@ -4,6 +4,29 @@
 [![Open in Colab en](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1eRTPn37ltBbYsISy9Aw2NuI2Aq5CQrD9?usp=sharing)
 [![Open in Colab zh](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1d5KQtbemerlSDSxZIfAaWXhKr30QypiK?usp=sharing)
 [![Open in DSW](https://gallery.pai-ml.com/assets/open-in-dsw.svg)](https://gallery.pai-ml.com/#/preview/deepLearning/nlp/llama_factory)
+<<<<<<< HEAD
+=======
+[![Spaces](https://img.shields.io/badge/🤗-Open%20in%20Spaces-blue)](https://huggingface.co/spaces/hiyouga/LLaMA-Board)
+[![Studios](https://img.shields.io/badge/ModelScope-Open%20in%20Studios-blue)](https://modelscope.cn/studios/hiyouga/LLaMA-Board)
+
+[![GitHub Tread](https://trendshift.io/api/badge/repositories/4535)](https://trendshift.io/repositories/4535)
+
+👋 Join our [WeChat](assets/wechat.jpg) or [NPU user group](assets/wechat_npu.jpg).
+
+\[ English | [中文](README_zh.md) \]
+
+**Fine-tuning a large language model can be easy as...**
+
+https://github.com/user-attachments/assets/7c96b465-9df7-45f4-8053-bf03e58386d3
+
+Choose your path:
+
+- **Colab**: https://colab.research.google.com/drive/1eRTPn37ltBbYsISy9Aw2NuI2Aq5CQrD9?usp=sharing
+- **PAI-DSW**： https://gallery.pai-ml.com/#/preview/deepLearning/nlp/llama_factory
+- **Local machine**: Please refer to [usage](#getting-started)
+- **Chinese Beginner's Tutorial**： https://zhuanlan.zhihu.com/p/695287607
+- **Chinese Project Documentation**： https://llamafactory.readthedocs.io/zh-cn/latest/
+>>>>>>> 625a0e32c47aeb72a6fe9c3536914996912e89d4
 
 ## Table of Contents
 
